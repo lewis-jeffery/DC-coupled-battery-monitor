@@ -22,6 +22,7 @@ At present the Raspberry Pi and HAT are powered by a USB-C plug pack.  A 48VDC (
 Data is transmitted via WiFi which is also needed at the car charger end and may also need to be available during a power outage.
 
 ## CT simulator
+The CT simulator is based on an ESP32 that polls the Raspberry server regularly and multiplies this by a sample of the grid voltage.  An analog signal is derived from the ESP32 PMW output which is filtered and AC coupled to an opamp voltage to current converter. 
 
 ![PCB](CT_simulator_PCB.png) 
 
