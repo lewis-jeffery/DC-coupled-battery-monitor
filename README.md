@@ -27,3 +27,5 @@ The CT simulator is based on an ESP32 that polls the Raspberry server regularly 
 
 Note the rendering of the PCB does not show the required isolation around the 240VAC terminals.  The prototype PCB was made on a desktop mill and isolation was included at the milling gcode stage.
 
+Once the CT simulator is connected the Zappi the selected terminals should be declared as battery measurement in the Zappi configuration.  Batery power can then read on the myenegi app and calibration_factor in the ESP32 code (line 32) adjusted for best accuracy.  A Jupyter Notebook with a tool to set a fixed output from the server is included.
+
