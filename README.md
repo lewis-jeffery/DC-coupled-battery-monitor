@@ -24,7 +24,7 @@ Data is transmitted via WiFi which is also needed at the car charger end and may
 ## CT simulator
 The CT simulator is based on an ESP32 that polls the Raspberry server regularly and multiplies this by a sample of the grid voltage.  An analog signal is derived from the ESP32 PMW output which is filtered and AC coupled to an opamp voltage to current converter. 
 
-![Schematic](CT_simulator_schematic.pdf) 
+![Schematic](CT_simulator_schematic.png) 
 
 ![PCB](CT_simulator_PCB.png) 
 
