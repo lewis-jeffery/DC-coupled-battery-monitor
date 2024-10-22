@@ -1,1 +1,5 @@
+The myenergi "Zappi" can regulate an electric car charger so as to balance solar PV generation.  This avoids the purchase of expensive electrical power hwn solar is available.  The system works well.  
 
+Addition of a house battery is completly possible but, depending on how it is wired, may preference charge/discharge of the car or the house. The Zappi can be configured to change the sequence is desired provided that the power to/from that bettery is measured.   As supplied the Zappi can only measure AC couple batteries (such as Tesla Powerwall) but many existing houshold batteries are DC coupled.
+
+This project extracts the battery power from a typical DC coupled "hybrid inverter" using a Modbus connection.  This is a data connection only.  It does not interfere with battery or mains power wiring.   The battery power data is convertered into a mains frequency current proportional to measured power that is applied to the Current Transformer terminals of the Zappi.  This emulates the CT that is present on an AC coupled battery 
