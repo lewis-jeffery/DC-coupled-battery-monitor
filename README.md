@@ -8,4 +8,4 @@ This project extracts the battery power from a typical DC coupled "hybrid invert
 ## Disclaimer
 This is a prototype that has worked well for me, so far.   It may not be what you want.
 
-I posted this concept in the [myenergi forum](https://myenergi.info/viewtopic.php?p=132908#p132908)  [and this](https://myenergi.info/viewtopic.php?p=133013#p133013)and received a few comments.  If you are not in a position to analyse these comments and make an informed judgement of your own then this is not the project for you.
+I posted this concept in the [myenergi forum](https://myenergi.info/viewtopic.php?p=132908#p132908)  [(and this)](https://myenergi.info/viewtopic.php?p=133013#p133013) and received a few comments.  If you are not in a position to analyse these comments and make an informed judgement of your own then this is not the project for you.
