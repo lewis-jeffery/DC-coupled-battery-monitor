@@ -5,6 +5,8 @@ Addition of a house battery is completely possible but, depending on how it is w
 
 This project extracts the battery power reading from a typical DC coupled "hybrid inverter" using a Modbus connection.  This is a data connection only.  It does not interfere with battery or mains power wiring.   The battery power data is convertered into a mains frequency current proportional to the measured power and is applied to the Current Transformer terminals of the Zappi.  This emulates the CT that is present on an AC coupled battery and permits the in-built Zappi controls to operate effectively.
 
+Note that coordination of house/car battery charge/discharge is the objective rather than accounting precision.  The number displayed on the myenergi app will be close enough for charger contol purposes but do not be surprised if the energy balance is out by a few percent.
+
 ## Warnings
 This is a prototype that has worked well for me, so far.   It may not be what you want.
 
