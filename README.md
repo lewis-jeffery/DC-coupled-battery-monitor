@@ -20,3 +20,8 @@ The python script server.py is set to run on startup in /etc/rc.local on the Ras
 At present the Raspberry Pi and HAT are powered by a USB-C plug pack.  A 48VDC (nominal) to 15V converter HAT is in the works so that the server can be powered from the house battery.  This is important if the car charger is wanted during islanding from the grid.
 
 Data is transmitted via WiFi which is also needed at the car charger end and may also need to be available during a power outage.
+
+## CT simulator
+
+![PCB](CT_simulator_PCB.png) 
+
