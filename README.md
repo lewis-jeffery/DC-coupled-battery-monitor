@@ -13,7 +13,7 @@ Connection to the inverter via the Modbus interface (RS485) is required.  This i
 I posted this concept in the [myenergi forum](https://myenergi.info/viewtopic.php?p=132908#p132908)   and received a few comments [(and this)](https://myenergi.info/viewtopic.php?p=133013#p133013).  If you are not in a position to analyse these comments and make an informed judgement of your own then this is not the project for you.
 
 ## Data from the inverter
-A Modbus connection to the Sungrow SH5K-30 inverter is made using a Raspberry Pi 4B with a [RS485 HAT](https://www.waveshare.com/rs485-can-hat-b.htm) .  This particular HAT galvanically isolates the Raspberry from the RS485 signals.  I have observed significant common mode voltages on the data lines and insist on isolation for my own projects.   
+A Modbus connection to the Sungrow SH5K-30 inverter is made using a Raspberry Pi 4B with a [RS485 HAT](https://www.waveshare.com/rs485-can-hat-b.htm) .  This particular HAT galvanically isolates the Raspberry from the RS485 signals.  Many cheaper, non-isolated versions are available.  I have observed significant common mode voltages on the data lines and consider isolation essential.  
 
 The python script server.py is set to run on startup in /etc/rc.local on the Raspberry Pi.  Tools to monitor the server and to set a fixed output for calibration purposes are included in 'server tools.ipynb'.
 
@@ -22,7 +22,7 @@ At present the Raspberry Pi and HAT are powered by a USB-C plug pack.  A 48VDC (
 Data is transmitted via WiFi which is also needed at the car charger end and may also need to be available during a power outage.
 
 ## CT simulator
-The CT simulator is based on an Arduino ESP32 Nano that polls the Raspberry server regularly and multiplies this by a sample of the grid voltage.  An analog signal is derived from the ESP32 PMW output which is filtered and AC coupled to an opamp voltage to current converter.  
+The CT simulator is based on an Arduino ESP32 Nano that polls the Raspberry server regularly for battery power.  This is multiplied by a sample of the grid voltage and scaled to represent the current that would be present in a CT on an equivalent AC coupled battery.  An analog signal is derived from the ESP32 PMW output which is filtered and fed to an opamp voltage to current converter.  
 
 A sample of grid voltage is taken from the secondary of an isolation transformer and level shifted to suit the 0 - 3.3V capability of the ESP32.  A fixed offset voltage is required for this shift and is generated using a 5.6V zener.  A few more resistors than strictly required are included in the schematic.  If adjustment is necessary a few places for components on a PCB is useful.  A later version may replace these components with potentiometers.
 
@@ -33,5 +33,5 @@ The schematic is included as CT_simulator_schematic.pdf and a rendering of the P
 
 Note the rendering of the PCB does not show the required isolation around the 240VAC terminals.  The prototype PCB was made on a desktop mill and isolation was included at the milling gcode stage.   Also a consequence of milling rather than use of a PCB fabrication shop is the absence of plated through holes which places some constraints on track routing.  A fab-shop version of this board is a potential next step.
 
-Once the CT simulator is connected the Zappi the selected terminals should be declared as battery measurement in the Zappi configuration.  Batery power can then read on the myenegi app and calibration_factor in the ESP32 code (line 32) adjusted for best accuracy.  A Jupyter Notebook with a tool to set a fixed output from the server is included.
+Once the CT simulator is connected the Zappi the selected terminals should be declared as battery measurement in the Zappi configuration.  Battery power can then read on the myenegi app and calibration_factor in the ESP32 code (line 32) adjusted for best accuracy.  A Jupyter Notebook with a tool to set a fixed output from the server is included.
 
