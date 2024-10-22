@@ -15,4 +15,8 @@ I posted this concept in the [myenergi forum](https://myenergi.info/viewtopic.ph
 ## Data from the inverter
 A Modbus connection to the Sungrow SH5K-30 inverter is made using a Raspberry Pi 4B with a [RS485 HAT](https://www.waveshare.com/rs485-can-hat-b.htm) .  This particular HAT galvanically isolates the Raspberry from the RS485 signals.  I have observed significant common mode voltages on the data lines and insist on isolation for my own projects.   
 
-The python script server.py is set to run on startup in /etc/rc.local on the Raspberry Pi
+The python script server.py is set to run on startup in /etc/rc.local on the Raspberry Pi.  Tools to monitor the server and to set a fixed output for calibration purposes are included in 'server tools.ipynb'.
+
+At present the Raspberry Pi and HAT are powered by a USB-C plug pack.  A 48VDC (nominal) to 15V converter HAT is in the works so that the server can be powered from the house battery.  This is important if the car charger is wanted during islanding from the grid.
+
+Data is transmitted via WiFi which is also needed at the car charger end and may also need to be available during a power outage.
