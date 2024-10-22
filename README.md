@@ -1,4 +1,4 @@
-The myenergi "Zappi" can regulate an electric car charger so as to balance solar PV generation.  This avoids the purchase of expensive electrical power hwn solar is available.  The system works well.  
+The myenergi "Zappi" can regulate an electric car charger so as to balance solar PV generation.  This avoids the purchase of expensive electrical power own solar is available.  The system works well.  
 
 Addition of a house battery is completly possible but, depending on how it is wired, may preference charge/discharge of the car or the house. The Zappi can be configured to change the sequence is desired provided that the power to/from that bettery is measured.   As supplied the Zappi can only measure AC couple batteries (such as Tesla Powerwall) but many existing houshold batteries are DC coupled.
 
