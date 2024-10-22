@@ -1,3 +1,6 @@
+// Arduino Nano ESP32
+// IDE Board version 2.0.18-20240930.arduino3   
+
 #include <dummy.h>
 #include <WiFi.h>
 #include <WiFiUdp.h>
@@ -8,7 +11,7 @@ char packetBuffer[255];
 unsigned int localPort = 8000;
 char SERVER_IP[] = "your.IP.address.xxx";            // insert your IP address
 unsigned int SERVER_PORT = 8000;
-const char *ssid = "yourWiFiAddress";
+const char *ssid = "yourWiFiAddress";                // WiFi parameters as string
 const char *password = "yourWiFiPassword";
 
 float battery_power;
@@ -24,9 +27,9 @@ int pinACout = A3;
 const uint32_t freq = 5000;                 // DAC PMW frequency
 const int resolution = 12;                  // DAC PMW resolution
 
-float scale = 0.0001695;                    
+float scale = 0.0001695;                    // scale for 12 bit (i.e. 4096 counts) on 0 - 3.3V  span          
 float offset = 1241.2;
-int AC_ref_mid = 1986;
+int AC_ref_mid = 1986;                      // midpoint will be updated during operation so less critical here.
 int AC_ref_mid_est = 0;
 float AC_ref_accumated = 0.;
 float calibration_factor = 1.65;            // adjust using calibration tools
