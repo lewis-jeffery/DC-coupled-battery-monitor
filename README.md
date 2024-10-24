@@ -17,6 +17,8 @@ I posted this concept in the [myenergi forum](https://myenergi.info/viewtopic.ph
 ## Data from the inverter
 A Modbus connection to the Sungrow SH5K-30 inverter is made using a Raspberry Pi 4B with a [RS485 HAT](https://www.waveshare.com/rs485-can-hat-b.htm) .  This particular HAT galvanically isolates the Raspberry from the RS485 signals.  Many cheaper, non-isolated versions are available.  I have observed significant common mode voltages on the data lines and consider isolation essential.  
 
+Modbus details are readily available from vendors.  Sungrow data for a range of inverters is [here.](https://www.photovoltaikforum.com/core/attachment/235914-ti-20211231-communication-protocol-of-residential-hybrid-inverter-v1-0-23-en-pdf/)   Fronius, and others, use open standands as described [here.](https://www.fronius.com/en/solar-energy/installers-partners/technical-data/all-products/system-monitoring/open-interfaces/modbus-rtu)
+
 The python script server.py is set to run on startup in /etc/rc.local on the Raspberry Pi.  Tools to monitor the server and to set a fixed output for calibration purposes are included in 'server tools.ipynb'.
 
 At present the Raspberry Pi and HAT are powered by a USB-C plug pack.  A 48VDC (nominal) to 15V converter HAT is in the works so that the server can be powered from the house battery.  This is important if the car charger is wanted during islanding from the grid.
@@ -35,5 +37,9 @@ The schematic is included as CT_simulator_schematic.pdf and a rendering of the P
 
 Note the rendering of the PCB does not show the required isolation around the 240VAC terminals.  The prototype PCB was made on a desktop mill and isolation was included at the milling gcode stage.   Also a consequence of milling rather than use of a PCB fabrication shop is the absence of plated through holes which places some constraints on track routing.  A fab-shop version of this board is a potential next step.
 
-Once the CT simulator is connected the Zappi the selected terminals should be declared as battery measurement in the Zappi configuration.  Battery power can then read on the myenegi app and calibration_factor in the ESP32 code (line 32) adjusted for best accuracy.  A Jupyter Notebook with a tool to set a fixed output from the server is included.
+Once the CT simulator is connected the Zappi the selected terminals should be declared as battery measurement in the Zappi configuration.  Battery power can then read on the myenegi app.  This version is scaled to for 3kW maximum house battery power charge and discharge.  Another scale may be better for your system.  The ADC input has 12 bit resolution over a 0 - 3.3V span and the PWM output is set at 5000Hz and 12 bit resolution.  Myenergi devices assume a CT ratio of 2500:1 so in this case  3kW of battery power is equivalent to 12.5A at 240VAC which would induce 5mA in the secondary of the equivalent CT.  This current is generated in the opamp voltage to current stage and delivered to the Zappi CT terminals.
+
+Using the full ADC and PMW range effectively may require some balancing.  A convenient degree of freedom is the introducion of calibration_factor in the ESP32 code (line 32) which should be adjusted for best accuracy.
+
+A Jupyter Notebook with a tool to set a fixed output from the server is included to aid calibration.
 
