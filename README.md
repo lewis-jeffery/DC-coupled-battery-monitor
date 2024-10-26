@@ -39,7 +39,7 @@ Note the rendering of the PCB does not show the required isolation around the 24
 
 Once the CT simulator is connected the Zappi the selected terminals should be declared as battery measurement in the Zappi configuration.  Battery power can then read on the myenegi app.  This version is scaled to for 3kW maximum house battery power charge and discharge.  Another scale may be better for your system.  The ADC input has 12 bit resolution over a 0 - 3.3V span and the PWM output is set at 5000Hz and 12 bit resolution.  Myenergi devices assume a CT ratio of 2500:1 so in this case  3kW of battery power is equivalent to 12.5A at 240VAC which would induce 5mA in the secondary of the equivalent CT.  This current is generated in the opamp voltage to current stage and delivered to the Zappi CT terminals.
 
-Using the full ADC and PMW range effectively may require some balancing.  A convenient degree of freedom is the introducion of calibration_factor in the ESP32 code (line 32) which should be adjusted for best accuracy.
+Using the full ADC and PMW range effectively may require some balancing.  A convenient degree of freedom is the introducion of calibration_factor in the ESP32 code (line 32) which should be adjusted for best accuracy.  Note that the PMW filter has a phase shift of 22 deg at 50Hz which represents a PF of 0.92.   Compensation for this effect is lumped within calibration_factor.
 
 A Jupyter Notebook with a tool to set a fixed output from the server is included to aid calibration.
 
